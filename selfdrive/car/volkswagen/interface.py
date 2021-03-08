@@ -1,5 +1,5 @@
 from cereal import car
-from selfdrive.car.volkswagen.values import CAR, BUTTON_STATES
+from selfdrive.car.volkswagen.values import CAR, MQB_CARS, BUTTON_STATES
 from selfdrive.car import STD_CARGO_KG, scale_rot_inertia, scale_tire_stiffness, gen_empty_fingerprint
 from selfdrive.car.interfaces import CarInterfaceBase
 
@@ -25,7 +25,7 @@ class CarInterface(CarInterfaceBase):
     # VW port is a community feature, since we don't own one to test
     ret.communityFeature = True
 
-    if candidate in [CAR.GOLF, CAR.AUDI_A3]:
+    if candidate in MQB_CARS:
       # Set common MQB parameters that will apply globally
       ret.carName = "volkswagen"
       ret.radarOffCan = True
@@ -39,14 +39,25 @@ class CarInterface(CarInterfaceBase):
       ret.lateralTuning.pid.kpBP = [0.]
       ret.lateralTuning.pid.kiBP = [0.]
 
-      ret.mass = 1600 + STD_CARGO_KG
-      ret.wheelbase = 2.64
-      ret.centerToFront = ret.wheelbase * 0.45
-      ret.steerRatio = 15.6
       ret.lateralTuning.pid.kf = 0.00006
       ret.lateralTuning.pid.kpV = [0.6]
       ret.lateralTuning.pid.kiV = [0.2]
       tire_stiffness_factor = 1.0
+
+      # Per-chassis tuning values, override tuning defaults here if desired
+
+      if candidate == CAR.AU_A3_MK3:
+        # Averages of all A3 variants
+        ret.mass = 1335 + STD_CARGO_KG
+        ret.wheelbase = 2.61
+
+      elif candidate == CAR.VW_GOLF_MK7:
+        # Averages of all Golf variants
+        ret.mass = 1397 + STD_CARGO_KG
+        ret.wheelbase = 2.62
+
+      ret.centerToFront = ret.wheelbase * 0.45
+
 
     ret.enableCamera = True  # Stock camera detection doesn't apply to VW
     ret.transmissionType = car.CarParams.TransmissionType.automatic
