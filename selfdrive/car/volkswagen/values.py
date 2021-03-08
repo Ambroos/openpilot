@@ -50,10 +50,12 @@ MQB_LDW_MESSAGES = {
 class CAR:
   GOLF = "VOLKSWAGEN GOLF"
   AUDI_A3 = "AUDI A3"
+  AUDI_A3_ETRON = "AUDI A3 E-TRON"
 
 MQB_CARS = {
   CAR.GOLF,                 # Chassis AU, 2013-2020, includes Golf, Alltrack, Sportwagen, GTI, GTI TCR, GTE, GTD, Clubsport, Golf R, e-Golf
-  CAR.AUDI_A3               # Chassis 8V, 2013-2019, includes A3, A3 e-tron, A3 g-tron, S3, RS3
+  CAR.AUDI_A3,              # Chassis 8V, 2013-2019, includes A3, A3 g-tron, S3, RS3, but not A3 e-tron
+  CAR.AUDI_A3_ETRON,        # Chassis 8V, 2013-2019, A3 e-tron only
 }
 
 FINGERPRINTS = {
@@ -88,10 +90,28 @@ FW_VERSIONS = {
     (Ecu.fwdCamera, 0x74f, None): [
       b'3Q0980654H ',  # Shared
     ],
+  },
+  CAR.AUDI_A3_ETRON: {
+    (Ecu.transmission, 0x7e1, None): [
+      b'0DD300046G ',  # 2018 A3 e-tron
+    ],
+    (Ecu.srs, 0x715, None): [
+      b'5Q0959655J ',  # 2018 A3 e-tron (MQB shared?)
+    ],
+    (Ecu.eps, 0x712, None): [
+      b'5Q0909144T ',  # Shared
+    ],
+    (Ecu.fwdRadar, 0x757, None): [
+      b'5Q0907572G ',  # 2018 A3 e-tron
+    ],
+    (Ecu.fwdCamera, 0x74f, None): [
+      b'3Q0980654H ',  # Shared
+    ],
   }
 }
 
 DBC = {
   CAR.GOLF: dbc_dict('vw_mqb_2010', None),
   CAR.AUDI_A3: dbc_dict('vw_mqb_2010', None),
+  CAR.AUDI_A3_ETRON: dbc_dict('vw_mqb_2010', None),
 }

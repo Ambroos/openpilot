@@ -50,6 +50,10 @@ class CarInterface(CarInterfaceBase):
         ret.mass = 1335 + STD_CARGO_KG
         ret.wheelbase = 2.61
 
+      if candidate == CAR.AUDI_A3_ETRON:
+        ret.mass = 1620 + STD_CARGO_KG
+        ret.wheelbase = 2.63
+
       elif candidate == CAR.GOLF:
         # Averages of all AU Golf variants
         ret.mass = 1397 + STD_CARGO_KG
