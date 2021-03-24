@@ -158,10 +158,6 @@ def match_fw_to_car(fw_versions):
       if ecu_type == Ecu.engine and candidate in [TOYOTA.COROLLA_TSS2, TOYOTA.CHR, TOYOTA.LEXUS_IS, TOYOTA.AVALON] and found_version is None:
         continue
 
-      # For VW, the factory LKAS camera is sometimes slow to wake up, and is optional for openpilot support
-      if ecu_type == Ecu.fwdCamera and candidate in VOLKSWAGEN_MQB_CARS and found_version is None:
-        continue
-
       # ignore non essential ecus
       if ecu_type not in ESSENTIAL_ECUS and found_version is None:
         continue

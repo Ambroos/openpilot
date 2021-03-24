@@ -46,12 +46,12 @@ class CarInterface(CarInterfaceBase):
 
       # Per-chassis tuning values, override tuning defaults here if desired
 
-      if candidate == CAR.AUDI_A3:
+      if candidate == CAR.AUDI_A3_MK3:
         # Averages of all 8V A3 variants
         ret.mass = 1335 + STD_CARGO_KG
         ret.wheelbase = 2.61
 
-      elif candidate == CAR.GOLF:
+      elif candidate == CAR.GOLF_MK7:
         # Averages of all AU Golf variants
         ret.mass = 1397 + STD_CARGO_KG
         ret.wheelbase = 2.62
@@ -69,12 +69,22 @@ class CarInterface(CarInterfaceBase):
         ret.mass = 1551 + STD_CARGO_KG
         ret.wheelbase = 2.79
 
-      elif candidate == CAR.SKODA_KODIAQ:
+      elif candidate == CAR.SEAT_ATECA_MK1:
+        # Averages of all 5F Ateca variants
+        ret.mass = 1900 + STD_CARGO_KG
+        ret.wheelbase = 2.64
+
+      elif candidate == CAR.SKODA_KODIAQ_MK1:
         # Averages of all 5N Kodiaq variants
         ret.mass = 1569 + STD_CARGO_KG
         ret.wheelbase = 2.79
 
-      elif candidate == CAR.SKODA_SCALA:
+      elif candidate == CAR.SKODA_OCTAVIA_MK3:
+        # Averages of all 5E/NE Octavia variants
+        ret.mass = 1388 + STD_CARGO_KG
+        ret.wheelbase = 2.68
+
+      elif candidate == CAR.SKODA_SCALA_MK1:
         # Averages of all NW Scala variants
         ret.mass = 1192 + STD_CARGO_KG
         ret.wheelbase = 2.65
