@@ -257,6 +257,7 @@ FW_VERSIONS = {
       b'\xf1\x875Q0909143P \xf1\x892051\xf1\x820527T6060405',  # 2018 Skoda Kodiaq
     ],
     (Ecu.fwdRadar, 0x757, None): [
+      b'\xf1\x875Q0907572J \xf1\x890654',
       b'\xf1\x872Q0907572R \xf1\x890372',  # 2018 Skoda Kodiaq
     ],
   },
